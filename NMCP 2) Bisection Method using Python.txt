@@ -1,0 +1,53 @@
+2) Bisection Method using Python
+def f(x): 
+    return x**3-5*x-9 
+def bisection(x0,x1,e): 
+    step = 1 
+    print('\n\n*** BISECTION METHOD IMPLEMENTATION ***')     
+    condition = True     
+    while condition:
+        x2 = (x0 + x1)/2
+        print('Iteration-%d, x2 = %0.6f and f(x2) = %0.6f' %(step, x2, f(x2)))
+        if f(x0) * f(x2) < 0 :
+	        x1 = x2
+        else:
+            x0 = x2
+         
+        step = step + 1
+        condition = abs(f(x2)) > e
+    print('\nRequired Root is : %0.8f' % x2)
+x0 = float(input('First Guess: '))
+x1 = float(input('Second Guess: '))
+e = float(input('Tolerable Error: '))
+if f(x0) * f(x1) > 0.0:
+    print('Given guess values do not bracket the root.')
+    print('Try Again with different guess values.')
+else:
+    bisection(x0,x1,e)
+
+output:- 
+
+First Guess: 1
+Second Guess: 3
+Tolerable Error: 0.00005
+
+
+*** BISECTION METHOD IMPLEMENTATION ***
+Iteration-1, x2 = 2.000000 and f(x2) = -11.000000
+Iteration-2, x2 = 2.500000 and f(x2) = -5.875000
+Iteration-3, x2 = 2.750000 and f(x2) = -1.953125
+Iteration-4, x2 = 2.875000 and f(x2) = 0.388672
+Iteration-5, x2 = 2.812500 and f(x2) = -0.815186
+Iteration-6, x2 = 2.843750 and f(x2) = -0.221588
+Iteration-7, x2 = 2.859375 and f(x2) = 0.081448
+Iteration-8, x2 = 2.851562 and f(x2) = -0.070592
+Iteration-9, x2 = 2.855469 and f(x2) = 0.005297
+Iteration-10, x2 = 2.853516 and f(x2) = -0.032680
+Iteration-11, x2 = 2.854492 and f(x2) = -0.013700
+Iteration-12, x2 = 2.854980 and f(x2) = -0.004204
+Iteration-13, x2 = 2.855225 and f(x2) = 0.000546
+Iteration-14, x2 = 2.855103 and f(x2) = -0.001829
+Iteration-15, x2 = 2.855164 and f(x2) = -0.000641
+Iteration-16, x2 = 2.855194 and f(x2) = -0.000048
+
+Required Root is : 2.85519409

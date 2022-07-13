@@ -1,0 +1,43 @@
+3) by False Position Method using Python 
+def f(x): 
+    return x**3-4*x+1
+def falsePosition(x0,x1,e): 
+    step = 1 
+    print('\n\n*** FALSE POSITION METHOD IMPLEMENTATION ***')     
+    condition = True     
+    while condition:         
+        x2 = x0 - (x1-x0) * f(x0)/( f(x1) - f(x0) ) 
+        print('Iteration-%d, x2 = %0.6f and f(x2) = %0.6f'% (step, x2, f(x2)))	 
+        if f(x0) * f(x2) < 0:
+            x1 = x2         
+        else:
+            x0 = x2 
+        step = step + 1	
+        condition=abs(f(x2))>e
+    print('\nRequired root is: %0.8f' % x2) 
+x0 = float(input('First Guess: ')) 
+x1 = float(input('Second Guess: '))
+e = float(input('Tolerable Error: '))
+if f(x0)*f(x1)> 0.0:
+    print('Given guess values do not bracket the root.')
+    print('Try Again with different guess values.')
+else:
+    falsePosition(x0,x1,e)
+
+
+
+output:-
+
+First Guess: 0
+Second Guess: 1
+Tolerable Error: 0.00001
+
+
+*** FALSE POSITION METHOD IMPLEMENTATION ***
+Iteration-1, x2 = 0.333333 and f(x2) = -0.296296
+Iteration-2, x2 = 0.257143 and f(x2) = -0.011569
+Iteration-3, x2 = 0.254202 and f(x2) = -0.000382
+Iteration-4, x2 = 0.254105 and f(x2) = -0.000013
+Iteration-5, x2 = 0.254102 and f(x2) = -0.000000
+
+Required root is: 0.25410180

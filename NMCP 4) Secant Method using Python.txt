@@ -1,0 +1,48 @@
+4)Secant Method using Python 
+
+def f(x):
+    return x**3 - x - 1
+def secant(x0,x1,e,N):
+    print('\n\n** SECANT METHOD IMPLEMENTATION **')
+    step = 1
+    condition = True
+    while condition:
+        if f(x0) == f(x1):
+            print('Divide by zero error!')
+            break
+        x2 = x0 - (x1-x0)*f(x0)/( f(x1) - f(x0) ) 
+        print('Iteration-%d, x2 = %0.6f and f(x2) = %0.6f' % (step, x2, f(x2)))
+        x0 = x1
+        x1 = x2
+        step = step + 1
+ 
+        if step > N:
+            print('Not Convergent!')
+            break
+        condition = abs(f(x2)) > e
+    print('\n Required root is: %0.8f' % x2)
+x0 = float(input('Enter First Guess: '))
+x1 = float(input('Enter Second Guess: '))
+e = float(input('Tolerable Error: '))
+N = int(input('Maximum Step: '))
+secant(x0,x1,e,N)
+
+
+output:-
+
+Enter First Guess: 1
+Enter Second Guess: 2
+Tolerable Error: 0.00004
+Maximum Step: 6
+
+
+** SECANT METHOD IMPLEMENTATION **
+Iteration-1, x2 = 1.166667 and f(x2) = -0.578704
+Iteration-2, x2 = 1.253112 and f(x2) = -0.285363
+Iteration-3, x2 = 1.337206 and f(x2) = 0.053881
+Iteration-4, x2 = 1.323850 and f(x2) = -0.003698
+Iteration-5, x2 = 1.324708 and f(x2) = -0.000043
+Iteration-6, x2 = 1.324718 and f(x2) = 0.000000
+Not Convergent!
+
+ Required root is: 1.32471797
